@@ -1,0 +1,10 @@
+---
+- name: install apache packages
+  host: all
+  become: true
+  tasks:
+    - name: install httpd
+      apt:
+        name: apache2
+        update_cache: yes
+        state: latest

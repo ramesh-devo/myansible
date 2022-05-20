@@ -19,4 +19,8 @@
     - name: copy the file
       copy:
         src: "{{ facts_file  }}"
-        dest: "{{ remote_dir }}"
+        dest: "{{ remote_dir }}" 
+    - name: print the out of ansible facts
+      debug:
+        msg: > 
+                The distribution is {{ ansible_distribution }}version is {{ ansible_distribution_major_version}} and ip address is {{ansible_all_ipv4_addresses}}

@@ -9,7 +9,8 @@
     - name: install apache
       apt:
         name: httpd
-        state: present
+        state: latest
+        update_cache: yes
     - name: create a remote directory
       file:
         path: "{{ remote_dir  }}"

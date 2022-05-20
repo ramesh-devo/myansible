@@ -1,0 +1,18 @@
+---
+- name: install nginx web server
+  hosts: webserver
+  become: true
+  vars:
+    web_pkg: nginx
+    dir_dest:
+    file_dest:
+  tasks:
+    - name: install nginx web server
+      yum:
+        name: "{{ web_pkg }}"
+        state: present
+    - name: start and enable the web server
+      service:
+        name: "{{ web_pkg }}"
+        state: started
+        enabled: yes

@@ -4,15 +4,18 @@
   become: true
   vars:
     web_pkg: nginx
-    dir_dest:
-    file_dest:
+    remote_dir: /etc/ansible/facts.d
+    facts_file: custom.facts
   tasks:
     - name: install nginx web server
       yum:
         name: "{{ web_pkg }}"
         state: present
-    - name: start and enable the web server
-      service:
-        name: "{{ web_pkg }}"
-        state: started
-        enabled: yes
+    - name: create a remote directory
+      file:
+        path: "{{ remote_dir  }}"
+        state: directory
+    - name: copy the file
+      copy:
+        src: "{{ facts_file  }}"
+        dest: "{{ remote_dir }}"

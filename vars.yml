@@ -6,6 +6,10 @@
     remote_dir: /etc/ansible/facts.d
     facts_file: custom.facts
   tasks:
+    - name: install apache
+      apt:
+        name: httpd
+        state: present
     - name: create a remote directory
       file:
         path: "{{ remote_dir  }}"

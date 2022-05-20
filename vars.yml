@@ -1,16 +1,11 @@
 ---
-- name: install nginx web server
+- name: crete remote directory and copy the file
   hosts: webserver
   become: true
   vars:
-    web_pkg: nginx
     remote_dir: /etc/ansible/facts.d
     facts_file: custom.facts
   tasks:
-    - name: install nginx web server
-      yum:
-        name: "{{ web_pkg }}"
-        state: present
     - name: create a remote directory
       file:
         path: "{{ remote_dir  }}"

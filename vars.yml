@@ -4,11 +4,12 @@
   become: true
   vars:
     remote_dir: /etc/ansible/facts.d
-    facts_file: custom.facts     
+    facts_file: custom.facts    
+    web_pkg: apache2 
   tasks:
     - name: install apache
       apt:
-        name: apache2
+        name: "{{ web_pkg }}"
         state: latest
         update_cache: yes
     - name: create a remote directory

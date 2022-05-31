@@ -1,0 +1,8 @@
+---
+- name: Doing The automation  by using roles
+  hosts: webserver
+  become: yes
+  gather_facts: true
+  roles:
+    - blockrole
+

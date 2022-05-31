@@ -1,2 +1,5 @@
 ---
 # vars file for block
+directory_path: /etc/kyndryl
+permission_dir_path: /etc/kyndryl
+file_path: /etc/hello

@@ -1,0 +1,5 @@
+---
+# vars file for update_repos
+ remote_dir: /etc/ansible/facts.d
+ facts_file: custom.facts    
+ web_pkg: apache2

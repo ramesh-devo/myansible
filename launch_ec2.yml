@@ -1,0 +1,14 @@
+---
+- name: To Launch the Amazon ec2 instance
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: creating ec2 instance
+      amazon.aws.ec2:
+        instance_type: t2.micro
+        image: ami-00af37d1144686454
+        region: us-west-1
+        aws_access_key: AKIASACHAMQTRACFVHPZ
+        aws_secret_key: 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  
+ 
+

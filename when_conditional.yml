@@ -1,0 +1,30 @@
+---
+- name: insalling httpd
+  hosts: all
+  become: yes
+  gather_facts: true
+  vars:
+     pkg_yum: httpd
+     pkg_apt: apache2
+  tasks:
+    - name: install httpd server
+      yum:
+        name: "{{ pak_yum}}"
+        state: present
+        tags: httpd
+      when: ansible_distribution != "Ubuntu"
+    - name: install apache2
+      apt:
+        name: "{{ pkg_apt }}"
+        state: present
+      when: ansible_distribution == "Ubuntu"
+    - name: Display the system details
+      shell: 'uptime'
+      register: up_time
+      #delegate_to: localhost
+      delegate_to: 172.31.16.88
+    - debug: var=up_time.stdout
+    - name: show the list of file in the directory
+      command: "ls -l /etc/ansible"
+      register: list_of_ansible
+    - debug: var=list_of_ansible.stdout

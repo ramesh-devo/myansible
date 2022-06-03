@@ -1,0 +1,14 @@
+---
+- name: installaling multiple packages
+  hosts: localhost
+  gather_facts: false
+  become: yes
+  tasks:
+    - name: install multi packages like git httpd nginx
+      apt:
+        name: "{{ item }}"
+        state: present
+      loop:
+        - git
+        - apache2
+        - nginx

@@ -1,0 +1,26 @@
+---
+- name: installing packages
+  hosts: webserver
+  gather_facts: true
+  become: yes
+  tasks:
+    - name: install httpd on Redhat family
+      yum:
+        name: httpd
+        state: present
+      when: ansible_os_family == "Redhat"
+    - name: install apache on Debian family
+      apt:
+        name: apache2
+        state: present
+      when: ansible_os_family == "Debian"
+    - name: install java on Redhat family
+      yum:
+        name: java-1.8.0-openjdk
+        state: present
+      when: ansible_os_family == "Redhat"
+    - name: install java on Debian family
+      apt:
+        name: openjdk-11-jdk
+        state: present
+      when: ansible_os_family == "Debian"

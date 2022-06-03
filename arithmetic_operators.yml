@@ -1,0 +1,16 @@
+---
+- name: do the some of the arithmetics
+  hosts: localhost
+  gather_facts: false
+  vars:
+    x: 10
+    y: 5
+  tasks:
+    - name: print the results
+      debug:
+        msg:
+          - "Sum of  x and y value is: {{x}} + {{y}} = {{ x+y}}"
+          - "multiplication of x and y value is: {{x}} * {{y}} = {{ x*y}}"
+          - "{{x}} % {{y}} = {{ x%y}}"
+          - "{{x}} / {{y}} = {{ x/y}}"
+          - "{{x}} - {{y}} = {{ x-y}}"

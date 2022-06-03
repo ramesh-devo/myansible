@@ -1,0 +1,9 @@
+---
+ - name: install httpd on Redhat family
+   yum:
+     name: httpd
+     state: present
+ - name: install java on Redhat family
+   yum:
+     name: java-1.8.0-openjdk
+     state: present

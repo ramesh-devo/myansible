@@ -1,0 +1,27 @@
+---
+- name: tasks with error ignore
+  hosts: webserver
+  gather_facts: false
+  become: yes
+  tasks:
+    - name: create kyndryl directory
+      file:
+        path: /tmp/kyndryl
+        state: "directory"
+    - name: copy the files to kyndryl
+      copy:
+        src: /home/ansible/myansible/kyndryl
+        dest: /tmp/kyndryl
+    - name: create a error task
+      file:
+        path: /ram/ansible
+        dest: /tmp/ram
+      ignore_errors: yes
+
+    - name: display the list of files in myansible
+      command: "ls -l /tmp/kyndryl/kyndryl"
+      register: out_myansible
+    - debug: var=out_myansible.stdout
+    - command: "ls -ll /home/ansible"
+      register: ansi
+    - debug: var=ansi.stdout

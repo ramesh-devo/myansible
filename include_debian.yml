@@ -1,0 +1,9 @@
+---
+- name: install apache on Debian family
+  apt:
+    name: apache2
+    state: present
+- name: install java on Debian family
+  apt:
+    name: openjdk-11-jdk
+    state: present
